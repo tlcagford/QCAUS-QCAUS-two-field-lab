@@ -4,6 +4,7 @@ import {
   coreReach,
   haloMass,
   solitonCoreKpc,
+  solitonMass,
 } from "@/lib/physics/astronomy";
 import { clusteringReach } from "@/lib/physics/cosmology";
 import {
@@ -13,7 +14,12 @@ import {
   type SkyTest,
   type SkyTestId,
 } from "@/lib/physics/cases";
-import { fringeScaleKpc } from "@/lib/physics/two-field";
+import {
+  epsilonFromLog,
+  fringeScaleKpc,
+  kHalfMode,
+  photonResidualContrast,
+} from "@/lib/physics/two-field";
 import { labParams, useLab } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
@@ -139,11 +145,15 @@ export function SkyTests() {
     redshift: test.redshift,
   };
   const mHalo = haloMass(aimed);
+  const mSol = solitonMass(aimed.m22, mHalo);
   const rc = solitonCoreKpc(aimed.m22, mHalo);
   const fringe = fringeScaleKpc(aimed.m22, aimed.omega);
   const reach = coreReach(aimed);
   const clustering = clusteringReach(aimed.m22);
   const residual = reach.contrast;
+  const fov = fovWidthKpc(test);
+  const eps = epsilonFromLog(aimed.logEpsilon);
+  const contrast = photonResidualContrast(aimed.omega, aimed.logEpsilon);
   const loaded =
     Math.abs(params.haloMassLog - test.haloMassLog) < 0.05 &&
     Math.abs(params.redshift - test.redshift) < 0.02;
@@ -158,14 +168,14 @@ export function SkyTests() {
         Prebuilt skies, live outputs
       </h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-        m, Ω and ε are universal. Each test aims them at a real NASA/ESA frame
-        whose halo mass is known. Circles are predictions from the sliders, not
-        detections. The pretty picture is light. The measurement is the mass
-        model, the kinematics, or the leftover after subtracting that light.
+        Run 1, then 2, then 3. Each test aims the same sliders at a NASA/ESA
+        frame whose halo mass is known. Circles and rings are predictions from
+        the code, not detections. The JPEG is starlight. The measurement is the
+        mass model, the kinematics, or the leftover after subtracting that light.
       </p>
 
       <div className="mt-4 flex gap-1 overflow-x-auto pb-1">
-        {SKY_TESTS.map((t) => (
+        {SKY_TESTS.map((t, i) => (
           <button
             key={t.id}
             type="button"
@@ -177,7 +187,7 @@ export function SkyTests() {
                 : "bg-muted text-muted-foreground hover:text-foreground",
             )}
           >
-            {t.param} · {t.object}
+            {i + 1} · {t.param} · {t.object}
           </button>
         ))}
       </div>
@@ -245,9 +255,30 @@ export function SkyTests() {
           </div>
 
           <div className="rounded-[12px] bg-muted p-3">
-            <p className="text-xs tracking-wide text-subtle uppercase">What you measure</p>
-            <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{test.measures}</p>
+            <p className="text-xs tracking-wide text-subtle uppercase">Do this, in order</p>
+            <ol className="mt-2 flex flex-col gap-2">
+              {test.steps.map((step, i) => (
+                <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-mono text-foreground tabular-nums">{i + 1}.</span>
+                  <span>{step}</span>
+                </li>
+              ))}
+            </ol>
           </div>
+
+          <div className="rounded-[12px] bg-background p-3">
+            <p className="text-xs tracking-wide text-subtle uppercase">What the code is doing now</p>
+            <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{test.codeDoes}</p>
+            <dl className="mt-3 grid grid-cols-1 gap-1.5 font-mono text-[11px] text-foreground sm:grid-cols-2">
+              <CodeStat label="FOV" value={`${fov.toFixed(0)} kpc`} />
+              <CodeStat label="M_sol" value={`${(mSol / 1e9).toFixed(2)} × 10⁹ M_⊙`} />
+              <CodeStat label="k½(m)" value={`${kHalfMode(aimed.m22).toFixed(2)} h Mpc⁻¹`} />
+              <CodeStat label="λ_fringe" value={`${fringe.toFixed(2)} kpc`} />
+              <CodeStat label="ε" value={eps.toExponential(1)} />
+              <CodeStat label="Ω·ε contrast" value={`${(contrast * 100).toFixed(1)} %`} />
+            </dl>
+          </div>
+
           <div className="rounded-[12px] bg-muted p-3">
             <p className="text-xs tracking-wide text-subtle uppercase">Why it matters</p>
             <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{test.significance}</p>
@@ -293,6 +324,15 @@ function Stat({ label, value, unit }: { label: string; value: string; unit: stri
         {value}
         {unit ? <span className="text-subtle"> {unit}</span> : null}
       </dd>
+    </div>
+  );
+}
+
+function CodeStat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex items-baseline justify-between gap-2">
+      <dt className="text-subtle">{label}</dt>
+      <dd className="tabular-nums">{value}</dd>
     </div>
   );
 }
