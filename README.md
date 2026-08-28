@@ -62,6 +62,57 @@ Run in order. You do not start with leftover light.
 
 Circle = predicted core. Rings = predicted fringes. Annulus = photon residual. Credits: NASA, ESA, CSA, STScI.
 
+The three tests are one Lagrangian read three ways. Run them in order. A miss on 1 voids 2 and 3.
+Live on qcaus-qcaus.vercel.app (Tests). Each card now has Do this, in order, live FOV / $k_{1/2}$ / fringe / $\varepsilon$ contrast, and the kill condition.
+
+Test 1 — weigh $m$ · I Zwicky 18 (HST)
+Question. Is the boson mass that cuts the universe the same mass that cores this dwarf?
+Do this.
+
+Load the halo ($10^{8.8}\,M_\odot$, $z=0.0025$). $m,\Omega,\varepsilon$ stay yours.
+Read $r_c$. Code: Schive 2014$r_c = 1.6\,\mathrm{kpc}\cdot m_{22}^{-1}\cdot(M_\mathrm{sol}/10^9)^{-1/3}$.
+Solid circle = that $r_c$ on the ACS frame (FOV $\approx 13$ kpc). Raise $m$: circle shrinks.
+Cosmological panel: $k_{1/2}=4.5\,m_{22}^{4/9}$ h Mpc$^{-1}$. Same $m$, Lyman-$\alpha$ ruler.
+Slide $m$. Both numbers must move together. Invert a measured core and a measured cutoff: one mass.
+If kinematics want a large core (small $m$) and the forest wants a high $k_{1/2}$ (large $m$), stop.
+
+Code. solitonMass → solitonCoreKpc → pixel radius via FOV. kHalfMode on $P(k)$. $\varepsilon$ is ignored.
+Significance. Other DM models get a free core per galaxy. Here the core is a particle mass. That is the lock: a way to be wrong.
+Dies if the two $m$’s disagree, or you need $H(z)$ to move.
+
+Test 2 — find $\Omega$ · SMACS 0723 (JWST)
+Question. After $m$ is locked, is there a second envelope, or only ordinary FDM?
+Do this.
+
+Freeze $m$. Load this cluster ($10^{14.8}\,M_\odot$, $z=0.39$). Core shrinks (heavy halo).
+Fringe $\lambda=(0.85/m_{22})(1.1-0.35\,\Omega)$ kpc — period of $\Re(\psi_t^*\psi_d e^{i\Delta\phi})$.
+Dashed rings = $1\lambda,2\lambda,3\lambda$. $\Omega=0$: they vanish (single-field).
+Same $\Omega$ multiplies a $\sin^2$ beat onto $T_\mathrm{FDM}(k)$. $\varepsilon$ still does not move $P(k)$.
+A real measurement is a lensing residual after subtracting the smooth soliton, not counting rings on the JPEG.
+If rings want $\Omega\approx0.4$ and $P(k)$ wants $\Omega\approx0$, two-field is wrong even if Test 1 passed.
+
+Code. fringeScaleKpc draws the dashes. twoFieldDensity splits the soliton and adds $2\Omega|\psi_t||\psi_d|\cos(2\pi r/\lambda)$. twoFieldTransfer is the same $\Omega$ on $P(k)$.
+Significance. This is the FDM vs two-field discriminator. WDM fakes a cutoff, not a core+fringe. SIDM fakes a core, not a fringe locked to Lyman-$\alpha$. $\Omega$ is the off-diagonal of $\hat\rho$ — same object as PDP and the link lab.
+Dies if the two $\Omega$’s disagree.
+
+Test 3 — sense $\varepsilon$ · MACS J0416 (HST)
+Question. After $m$ and $\Omega$ are known, does leftover light trace the dark interference?
+Do this.
+
+Do not start here. Lock Tests 1 and 2, then load this halo.
+Filled disc is not a mass core. Opacity $=\Omega\cdot(\varepsilon/10^{-10})^{0.15}$. A ruler, not a catalog flux.
+Slide $\log_{10}\varepsilon$. $r_c$, $k_{1/2}$, fringe period must not move. Only the disc breathes.
+Real pipeline: subtract galaxies, ICL, PSF; ask if leftover SB traces the soliton at that contrast.
+PDP reconstructs a decohered leftover. It is not a detection button.
+Wrong place or wrong contrast, with $m$ and $\Omega$ fixed: $\varepsilon$ is not measured. Dust is not a dark photon.
+
+Code. photonResidualContrast sets opacity. Overlay radii ignore $\varepsilon$. twoFieldTransfer does not take $\varepsilon$, so $P(k)$ sits still.
+Significance. Single-field FDM is dark. Two-field may leak because Holdom mixing is already in $\mathcal{L}$. Easiest test to fake — that is why it is last.
+Dies if residual scale and contrast disagree, or leftover appears with no soliton.
+
+Why three. Two skies plus one photon channel. Not six cosmologies. Particle/QFT, BEC, Q-info, GR are dialects of the same three numbers. Refresh the live site after Vercel finishes the deploy, then tap 1 · m · I Zwicky 18.
+
+
 ### Link lab (analog, not a dark-photon modem)
 
 Same Ω, now a split laser, a fiber pair, or two radios. Bits live in Δφ, in the cross term, not in public intensity.
