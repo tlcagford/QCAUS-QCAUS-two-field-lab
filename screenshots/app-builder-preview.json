@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "QCAUS",
+      "hasCanvas": true,
+      "bodyTextLen": 12507,
+      "bodyTextHash": "ffd7b270af12b036916b71ab15055f9a73ebdc23ef4167c49ca1abc7f360392e",
+      "bodyTextPrefix": "QUANTUM COSMOLOGY & ASTROPHYSICS UNIFIED SUITE · V4.0 QCAUS Tony",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "QCAUS",
+      "hasCanvas": true,
+      "bodyTextLen": 12429,
+      "bodyTextHash": "094ddac46cdfc26fc2485ea35c1e60209c015ca40cb234f7a24522e66e66cc4e",
+      "bodyTextPrefix": "QUANTUM COSMOLOGY & ASTROPHYSICS UNIFIED SUITE · V4.0 QCAUS Tony",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
