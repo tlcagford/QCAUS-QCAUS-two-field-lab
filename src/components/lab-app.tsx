@@ -117,12 +117,15 @@ export function LabApp() {
             a likelihood. Nothing here is a detection. Magnetar QED and stellar
             interiors belong to other QCAUS pipelines, not these two panels.
             HST/JWST frames: NASA, ESA, CSA, STScI; overlays are predictions.
-            Proof of concept analog — not a modem. The two-field codec is a
-            separate app (
-            <a className="text-foreground underline-offset-2 hover:underline" href="/codec">
-              /codec
+            Proof of concept analog — not a modem. The stealth codec is a
+            separate project:{" "}
+            <a
+              className="text-foreground underline-offset-2 hover:underline"
+              href="https://github.com/tlcagford/QCAUS-QCAUS-StealthField"
+            >
+              QCAUS-QCAUS-StealthField
             </a>
-            ).
+            .
           </p>
         </footer>
       </main>

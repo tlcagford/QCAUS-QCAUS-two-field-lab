@@ -3,8 +3,8 @@
 Tony Eugene Ford. Interactive proof of concept for the Ford 2026 two-field Lagrangian: one mass, one coherence, one mixing angle, tested on two skies. Analog, not a modem.
 
 **Live:** [qcaus-qcaus.vercel.app](https://qcaus-qcaus.vercel.app/)  
-**Codec (separate app):** [qcaus-qcaus.vercel.app/codec](https://qcaus-qcaus.vercel.app/codec) · [QCAUS-QCAUS-StealthField](https://github.com/tlcagford/QCAUS-QCAUS-StealthField)  
-**Code:** [github.com/tlcagford/QCAUS-QCAUS-](https://github.com/tlcagford/QCAUS-QCAUS-)  
+**Codec (separate repo):** [QCAUS-QCAUS-StealthField](https://github.com/tlcagford/QCAUS-QCAUS-StealthField)  
+**Code:** [github.com/tlcagford/QCAUS-QCAUS-two-field-lab](https://github.com/tlcagford/QCAUS-QCAUS-two-field-lab)  
 **Python suite:** [huggingface.co/spaces/QCAUS/QCAUS](https://huggingface.co/spaces/QCAUS/QCAUS)
 
 ## What the lab is
@@ -16,7 +16,7 @@ QCAUS v4.0 in this edition is **not** the old 20-pipeline Streamlit suite, **not
 
 Nothing on the page is a detection. Overlays on HST/JWST frames are predictions.
 
-The stealth two-field codec (laser / fiber / radio + QKD abort) is a **separate app** at `/codec`.
+The stealth two-field codec lives in **[QCAUS-QCAUS-StealthField](https://github.com/tlcagford/QCAUS-QCAUS-StealthField)** — it is not in this repository.
 
 ### Master Lagrangian
 
@@ -66,15 +66,11 @@ Circle = predicted core. Rings = predicted fringes. Annulus = photon residual. C
 
 Each test card in the live lab has **Do this, in order**, live FOV / k½ / fringe / ε contrast, and the kill condition. Run 1 then 2 then 3.
 
-### Two-field codec (separate app)
+### Two-field codec (separate repo)
 
-Not part of this proof of concept. Open [qcaus-qcaus.vercel.app/codec](https://qcaus-qcaus.vercel.app/codec) · repo [tlcagford/QCAUS-QCAUS-StealthField](https://github.com/tlcagford/QCAUS-QCAUS-StealthField).
+Not in this repository. See [tlcagford/QCAUS-QCAUS-StealthField](https://github.com/tlcagford/QCAUS-QCAUS-StealthField).
 
-Analog, **not a dark-photon modem.** Own Ω slider (not the cosmology mass). Laser / fiber / radio. Bits in Δφ. QKD abort on excess noise in ρ̂. Heal the channel; never the key.
-
-- **Laser:** turbulence kills coherence on a few km.
-- **Fiber:** best Ω; a right-basis tap, not loss, is the limit.
-- **Radio:** multipath. No optical CV-QKD (thermal photons). Use a post-quantum KEM for the key.
+Analog, **not a dark-photon modem.** Laser / fiber / radio. Bits in Δφ. QKD abort on excess noise in ρ̂. Heal the channel; never the key.
 
 ### What the lock makes possible
 
