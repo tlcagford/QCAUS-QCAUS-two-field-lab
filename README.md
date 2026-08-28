@@ -1,14 +1,3 @@
----
-title: QCAUS Lab
-emoji: 🌌
-colorFrom: gray
-colorTo: yellow
-sdk: docker
-app_port: 7860
-pinned: false
-license: other
----
-
 # QCAUS · two-field lab
 
 Interactive cosmology / astronomy lock plus a two-mode optical analog (covert carrier + QKD abort).
@@ -16,28 +5,30 @@ Interactive cosmology / astronomy lock plus a two-mode optical analog (covert ca
 **Live:** [qcaus-qcaus.vercel.app](https://qcaus-qcaus.vercel.app/)  
 **Code:** [github.com/tlcagford/QCAUS-QCAUS-](https://github.com/tlcagford/QCAUS-QCAUS-)
 
-## Dual licence
+https://huggingface.co/spaces/QCAUS/QCAUS full suite
 
-This project is released under a **dual licence**. See [`LICENSE`](LICENSE).
+## Dual license
+
+This project is released under a **dual license**. See [`LICENSE`](LICENSE).
 
 - **Academic / non-commercial** — free for research, education, and personal projects, with attribution to Tony Eugene Ford.
-- **Commercial** — requires a separate licence. Contact the author before any company, product, sponsorship, or paid use.
+- **Commercial** — requires a separate license. Contact the author before any company, product, sponsorship, or paid use.
 
-Core Ford 2026 algorithms remain the IP of **Tony Eugene Ford** and the **Future Ford Peace and Justice Foundation**. Published so others have freedom to operate and cite; publication is not a commercial licence.
+Core Ford 2026 algorithms remain the IP of **Tony Eugene Ford**. Published so others have freedom to operate and cite; publication is not a commercial license.
 
 ## Contact
 
 **Tony Eugene Ford**  
 Independent researcher — astrophysics and quantum systems  
 Colorado  
-
-- Email: [tlcagford@gmail.com](mailto:tlcagford@gmail.com)  
+ 
+- Email: [tlcagford@protonmail.com](mailto:tlcagford@protonmail.com)  
 - GitHub: [github.com/tlcagford](https://github.com/tlcagford)  
 - Lab: [qcaus-qcaus.vercel.app](https://qcaus-qcaus.vercel.app/)  
 - Hugging Face (Python suite): [huggingface.co/spaces/QCAUS/QCAUS](https://huggingface.co/spaces/QCAUS/QCAUS)  
 - X: [x.com/TonyFor76801259](https://x.com/TonyFor76801259)
 
-Commercial, partnership, and sponsorship inquiries: **tlcagford@gmail.com**
+Commercial, partnership, and sponsorship inquiries: **tlcagford@protonmail.com**
 
 ## Citation
 
