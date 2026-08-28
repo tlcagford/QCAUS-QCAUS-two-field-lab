@@ -23,7 +23,7 @@ export function LabApp() {
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div className="min-w-0 max-w-2xl">
               <p className="text-xs tracking-[0.22em] text-subtle uppercase">
-                Quantum Cosmology \u0026 Astrophysics Unified Suite · v4.0
+                Quantum Cosmology and Astrophysics Unified Suite · v4.0
               </p>
               <h1 className="mt-1 font-display text-3xl font-medium tracking-tight md:text-4xl">
                 QCAUS
