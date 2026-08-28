@@ -15,7 +15,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "QCAUS — Ford 2026 master Lagrangian. Cosmological and astronomical measurements of two-field FDM and PDP mixing.",
+          "QCAUS — Ford 2026 proof of concept. Cosmological and astronomical measurements of two-field FDM. Analog, not a modem.",
       },
       { name: "theme-color", content: "#090a0c" },
     ],

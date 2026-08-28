@@ -1,5 +1,6 @@
 import { BerChart } from "@/components/charts";
 import { Slider } from "@/components/ui/slider";
+import { OMEGA_DEFAULT } from "@/lib/physics/constants";
 import {
   berCurve,
   evaluateLink,
@@ -8,7 +9,6 @@ import {
   MEDIA,
   type MediumId,
 } from "@/lib/physics/comms";
-import { useLab } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
@@ -17,8 +17,9 @@ function fmtBer(p: number): string {
   return p.toExponential(1);
 }
 
+/** Standalone analog. Not wired to the QCAUS cosmology sliders. */
 export function LinkLab() {
-  const omegaTx = useLab((s) => s.omega);
+  const [omegaTx, setOmegaTx] = useState(OMEGA_DEFAULT);
   const [mediumId, setMediumId] = useState<MediumId>("laser");
   const medium = getMedium(mediumId);
   const [range, setRange] = useState(medium.rangeDefault);
@@ -37,26 +38,24 @@ export function LinkLab() {
   const qkd = evaluateQkd(link, medium, eve, healKey);
 
   return (
-    <section
-      id="link"
-      className="scroll-mt-4 rounded-xl bg-card p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.08)] md:p-5"
-    >
-      <p className="text-xs tracking-[0.18em] text-subtle uppercase">
-        Analog · not a dark-photon modem
-      </p>
-      <h2 className="mt-1 font-display text-2xl font-medium tracking-tight">
-        Stealth two-field codec
-      </h2>
-      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-        Bits live in Δφ, in the cross term Re(ψ_t* ψ_d exp(iΔφ)). Public
-        intensity is allowed to look like noise. Ω on the sliders is still
-        coherence — now of a laser split, a fiber pair, or two radios.
-        Isolation is a lab analog of leakage, not cosmological ε, which is too
-        small to carry a message. PDP is the receiver that heals the
-        off-diagonal after the channel decoheres it.
-      </p>
+    <section className="flex flex-col gap-4">
+      <label className="flex min-w-0 flex-col gap-0.5">
+        <span className="flex items-baseline justify-between">
+          <span className="text-[11px] font-medium tracking-wide text-muted-foreground uppercase">
+            Source coherence Ω
+          </span>
+          <span className="font-mono text-xs tabular-nums">{omegaTx.toFixed(2)}</span>
+        </span>
+        <Slider
+          min={0}
+          max={1}
+          step={0.01}
+          value={[omegaTx]}
+          onValueChange={([v]) => v !== undefined && setOmegaTx(v)}
+        />
+      </label>
 
-      <div className="mt-4 flex gap-1 overflow-x-auto pb-1">
+      <div className="flex gap-1 overflow-x-auto pb-1">
         {MEDIA.map((m) => (
           <button
             key={m.id}
@@ -74,7 +73,7 @@ export function LinkLab() {
         ))}
       </div>
 
-      <div className="mt-4 grid gap-4 lg:grid-cols-2">
+      <div className="grid gap-4 lg:grid-cols-2">
         <div className="flex min-w-0 flex-col gap-3">
           <p className="text-xs tracking-wide text-subtle uppercase">Bit error vs range</p>
           <BerChart data={curve} />
@@ -101,7 +100,7 @@ export function LinkLab() {
           <label className="flex min-w-0 flex-col gap-0.5">
             <span className="flex items-baseline justify-between">
               <span className="text-[11px] font-medium tracking-wide text-muted-foreground uppercase">
-                Isolation (lab analog of ε)
+                Isolation (lab analog of leakage)
               </span>
               <span className="font-mono text-xs tabular-nums">{iso} dB</span>
             </span>
@@ -123,10 +122,9 @@ export function LinkLab() {
             <Stat label="BER eavesdropper" value={fmtBer(link.berEve)} />
           </dl>
           <p className="text-[11px] leading-relaxed text-subtle">
-            Source Ω is the lab slider ({omegaTx.toFixed(2)}). Channel
-            multiplies it. PDP recovers a fraction by integrating ρ̂. Lower
-            isolation (more leakage) helps Eve and the intensity receiver —
-            that is the analog of opening ε.
+            Channel multiplies source Ω. PDP recovers a fraction by integrating
+            ρ̂ — that healing is for the payload, not the key. Lower isolation
+            helps Eve and the intensity receiver.
           </p>
         </div>
 
@@ -154,16 +152,16 @@ export function LinkLab() {
           <div className="rounded-[12px] bg-background p-3">
             <p className="text-xs tracking-wide text-subtle uppercase">What this is not</p>
             <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-              Not Holdom conversion, not FTL, not a message through a halo.
-              Physical-layer stealth is not cryptography: encrypt the bits.
-              A receiver that has the seed for ψ_d is an intended user, not
-              magic. Cosmological ε stays on the sky tests.
+              Analog, not a dark-photon modem. Not Holdom conversion, not FTL,
+              not a message through a halo. Physical-layer stealth is not
+              cryptography: encrypt the bits. Isolation here is not
+              cosmological ε.
             </p>
           </div>
         </div>
       </div>
 
-      <div className="mt-4 rounded-[12px] bg-muted p-4">
+      <div className="rounded-[12px] bg-muted p-4">
         <p className="text-xs tracking-[0.18em] text-subtle uppercase">Carrier with a quantum key</p>
         <h3 className="mt-1 font-display text-xl font-medium tracking-tight">
           QKD on the same two modes
@@ -172,9 +170,9 @@ export function LinkLab() {
           Distill a key from the quadratures of Re(ψ_t* ψ_d). Then the
           ciphertext rides the interference. An intensity hack still fails.
           A tap that copies D raises excess noise in ρ̂ — the session aborts,
-          so there is no key and the payload is random. That is the only sense
-          in which “hack fails.” Do not run PDP healing on the key
-          quadratures: that hides Eve.
+          so there is no key and the payload is random. That is detect-and-stop,
+          not a shield. Do not run PDP healing on the key quadratures: that
+          hides Eve.
         </p>
 
         <div className="mt-4 grid gap-4 lg:grid-cols-2">
@@ -205,7 +203,7 @@ export function LinkLab() {
             </label>
             <dl className="grid grid-cols-2 gap-2 sm:grid-cols-4">
               <Stat label="I(A:B)" value={qkd.iBob.toFixed(2)} />
-              <Stat label="I(A:E)" value={qkd.iEve.toFixed(2)} />
+              <Stat label="I(A:E)" value={qkd.iEveApparent.toFixed(2)} />
               <Stat label="key bits / symbol" value={qkd.keyBits.toFixed(2)} />
               <Stat
                 label="payload"

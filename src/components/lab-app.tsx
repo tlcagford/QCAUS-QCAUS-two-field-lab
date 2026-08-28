@@ -3,14 +3,13 @@ import { CosmoPanel } from "@/components/cosmo-panel";
 import { DisciplineBar } from "@/components/discipline-bar";
 import { FieldControls } from "@/components/field-controls";
 import { LagrangianCard } from "@/components/lagrangian-card";
-import { LinkLab } from "@/components/link-lab";
 import { LockCard } from "@/components/lock-card";
 import { Rosetta } from "@/components/rosetta";
 import { SkyTests } from "@/components/sky-tests";
 import { WaveCanvas } from "@/components/wave-canvas";
 import { kHalfMode } from "@/lib/physics/two-field";
 import { useLab } from "@/lib/store";
-import { Aperture, Orbit, Radio, ScanSearch } from "lucide-react";
+import { Aperture, Orbit, ScanSearch } from "lucide-react";
 
 export function LabApp() {
   const m22 = useLab((s) => s.m22);
@@ -29,8 +28,8 @@ export function LabApp() {
                 QCAUS
               </h1>
               <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                Tony Eugene Ford. One Lagrangian, two measurable scales.
-                The lock between them is the experiment.
+                Tony Eugene Ford. Proof of concept: one Lagrangian, two
+                measurable scales. The lock between them is the experiment.
               </p>
             </div>
             <div className="flex flex-col gap-0.5 font-mono text-xs text-muted-foreground md:items-end">
@@ -80,13 +79,6 @@ export function LabApp() {
             <ScanSearch className="size-3.5" strokeWidth={1.75} />
             Tests
           </a>
-          <a
-            href="#link"
-            className="flex h-11 flex-1 items-center justify-center gap-1.5 rounded-xl bg-card text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
-          >
-            <Radio className="size-3.5" strokeWidth={1.75} />
-            Link
-          </a>
         </nav>
 
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
@@ -100,8 +92,6 @@ export function LabApp() {
 
         <SkyTests />
 
-        <LinkLab />
-
         <LockCard />
 
         <Rosetta />
@@ -109,8 +99,8 @@ export function LabApp() {
         <footer className="border-t border-border pb-10 pt-5 text-sm leading-relaxed text-muted-foreground">
           <p>
             Tony Eugene Ford ·{" "}
-            <a className="text-foreground underline-offset-2 hover:underline" href="mailto:tlcagford@gmail.com">
-              tlcagford@gmail.com
+            <a className="text-foreground underline-offset-2 hover:underline" href="mailto:tlcagford@protonmail.com">
+              tlcagford@protonmail.com
             </a>
             {" · "}
             <a className="text-foreground underline-offset-2 hover:underline" href="https://github.com/tlcagford">
@@ -126,8 +116,13 @@ export function LabApp() {
             ΛCDM, Hu–Barkana–Gruzinov FDM, and NFW CDM. Survey-ruler estimates, not
             a likelihood. Nothing here is a detection. Magnetar QED and stellar
             interiors belong to other QCAUS pipelines, not these two panels.
-            HST/JWST frames: NASA, ESA, CSA, STScI; overlays are predictions. The
-            link lab is a two-mode codec analog, not cosmological mixing.
+            HST/JWST frames: NASA, ESA, CSA, STScI; overlays are predictions.
+            Proof of concept analog — not a modem. The two-field codec is a
+            separate app (
+            <a className="text-foreground underline-offset-2 hover:underline" href="/codec">
+              /codec
+            </a>
+            ).
           </p>
         </footer>
       </main>

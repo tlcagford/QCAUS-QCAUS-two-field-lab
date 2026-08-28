@@ -92,7 +92,7 @@ export const SKY_TESTS: SkyTest[] = [
     measures:
       "Weak and strong lensing map κ ∝ ∇²Φ. After the smooth soliton is subtracted, two-field leftover is periodic at the fringe scale of Re(ψ_t* ψ_d e^{iΔφ}). Cosmology’s twin is a low-amplitude beat on P(k). Cluster cores are physically small (Schive: r_c shrinks in heavy halos), so this is a JWST/HST job on the residual, not a dwarf-star-count job.",
     significance:
-      "This is how you tell two-field from ordinary FDM. Same mass, same core, extra spatial period. WDM can fake a cutoff; it cannot fake a core plus a fringe. SIDM can fake a core; it cannot lock that fringe to the Lyman-α beat. Ω is the off-diagonal of ρ̂ — the same coherence the PDP filter and the link lab use. If Test 1 already failed, a pretty ring here is decoration.",
+      "This is how you tell two-field from ordinary FDM. Same mass, same core, extra spatial period. WDM can fake a cutoff; it cannot fake a core plus a fringe. SIDM can fake a core; it cannot lock that fringe to the Lyman-α beat. Ω is the off-diagonal of ρ̂ — the same coherence the PDP filter uses. If Test 1 already failed, a pretty ring here is decoration.",
     how:
       "Dashed rings are 1, 2, 3 fringe wavelengths around the BCG. Ω = 0: rings collapse (single-field). Cluster r_c is the small solid circle inside them. NIRCam does not see rings by eye in the pretty picture; it can, in principle, see a periodic leftover in a mass model if the period beats a resolution element.",
     vsOthers:
