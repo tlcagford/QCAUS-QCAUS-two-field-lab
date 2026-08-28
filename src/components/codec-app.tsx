@@ -11,20 +11,28 @@ export function CodecApp() {
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div className="min-w-0 max-w-2xl">
               <h1 className="font-display text-3xl font-medium tracking-tight md:text-4xl">
-                Two-field codec
+                StealthField
               </h1>
               <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                Tony Eugene Ford. Bits live in Δφ, in the cross term. Public
-                intensity may look like noise. Detect-and-stop on excess noise
-                in ρ̂ — not a shield, not QCAUS cosmology.
+                Tony Eugene Ford. Two-field codec analog — bits in Δφ, not in
+                brightness. Detect-and-stop on excess noise in ρ̂. Not a
+                shield, not a dark-photon modem, not QCAUS cosmology.
               </p>
             </div>
-            <a
-              href="/"
-              className="text-sm text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
-            >
-              QCAUS lab
-            </a>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="/"
+                className="text-sm text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
+              >
+                QCAUS lab
+              </a>
+              <a
+                href="https://github.com/tlcagford/QCAUS-QCAUS-StealthField"
+                className="text-sm text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
+              >
+                GitHub
+              </a>
+            </div>
           </div>
         </div>
       </header>

@@ -3,7 +3,7 @@
 Tony Eugene Ford. Interactive proof of concept for the Ford 2026 two-field Lagrangian: one mass, one coherence, one mixing angle, tested on two skies. Analog, not a modem.
 
 **Live:** [qcaus-qcaus.vercel.app](https://qcaus-qcaus.vercel.app/)  
-**Codec (separate app):** [qcaus-qcaus.vercel.app/codec](https://qcaus-qcaus.vercel.app/codec)  
+**Codec (separate app):** [qcaus-qcaus.vercel.app/codec](https://qcaus-qcaus.vercel.app/codec) · [QCAUS-QCAUS-StealthField](https://github.com/tlcagford/QCAUS-QCAUS-StealthField)  
 **Code:** [github.com/tlcagford/QCAUS-QCAUS-](https://github.com/tlcagford/QCAUS-QCAUS-)  
 **Python suite:** [huggingface.co/spaces/QCAUS/QCAUS](https://huggingface.co/spaces/QCAUS/QCAUS)
 
@@ -68,7 +68,7 @@ Each test card in the live lab has **Do this, in order**, live FOV / k½ / fring
 
 ### Two-field codec (separate app)
 
-Not part of this proof of concept. Open [qcaus-qcaus.vercel.app/codec](https://qcaus-qcaus.vercel.app/codec) · repo [tlcagford/two-field-codec](https://github.com/tlcagford/two-field-codec).
+Not part of this proof of concept. Open [qcaus-qcaus.vercel.app/codec](https://qcaus-qcaus.vercel.app/codec) · repo [tlcagford/QCAUS-QCAUS-StealthField](https://github.com/tlcagford/QCAUS-QCAUS-StealthField).
 
 Analog, **not a dark-photon modem.** Own Ω slider (not the cosmology mass). Laser / fiber / radio. Bits in Δφ. QKD abort on excess noise in ρ̂. Heal the channel; never the key.
 
