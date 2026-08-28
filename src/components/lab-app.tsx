@@ -23,7 +23,7 @@ export function LabApp() {
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div className="min-w-0 max-w-2xl">
               <p className="text-xs tracking-[0.22em] text-subtle uppercase">
-                Quantum Cosmology & Astrophysics Unified Suite · v4.0
+                Quantum Cosmology \u0026 Astrophysics Unified Suite · v4.0
               </p>
               <h1 className="mt-1 font-display text-3xl font-medium tracking-tight md:text-4xl">
                 QCAUS
@@ -108,14 +108,26 @@ export function LabApp() {
 
         <footer className="border-t border-border pb-10 pt-5 text-sm leading-relaxed text-muted-foreground">
           <p>
-            Tony Eugene Ford · tlcagford@gmail.com. Master ℒ with Holdom mixing,
-            Schrödinger–Poisson FDM, two-field NR reduction, and the PDPBioGen
-            extension. Compared here with Planck 2018 ΛCDM, Hu–Barkana–Gruzinov
-            FDM, and NFW CDM. Survey-ruler estimates, not a likelihood. Nothing
-            here is a detection. Magnetar QED and stellar interiors belong to
-            other QCAUS pipelines, not these two panels. HST/JWST frames:
-            NASA, ESA, CSA, STScI; overlays are predictions. The link lab is a
-            two-mode codec analog, not cosmological mixing.
+            Tony Eugene Ford ·{" "}
+            <a className="text-foreground underline-offset-2 hover:underline" href="mailto:tlcagford@gmail.com">
+              tlcagford@gmail.com
+            </a>
+            {" · "}
+            <a className="text-foreground underline-offset-2 hover:underline" href="https://github.com/tlcagford">
+              github.com/tlcagford
+            </a>
+            . Dual licence: academic and non-commercial use is free; commercial use
+            needs a licence from the author. Ford 2026 algorithms are the IP of
+            Tony Eugene Ford and the Future Ford Peace and Justice Foundation.
+          </p>
+          <p className="mt-3">
+            Master ℒ with Holdom mixing, Schrödinger–Poisson FDM, two-field NR
+            reduction, and the PDPBioGen extension. Compared here with Planck 2018
+            ΛCDM, Hu–Barkana–Gruzinov FDM, and NFW CDM. Survey-ruler estimates, not
+            a likelihood. Nothing here is a detection. Magnetar QED and stellar
+            interiors belong to other QCAUS pipelines, not these two panels.
+            HST/JWST frames: NASA, ESA, CSA, STScI; overlays are predictions. The
+            link lab is a two-mode codec analog, not cosmological mixing.
           </p>
         </footer>
       </main>
